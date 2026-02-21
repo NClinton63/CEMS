@@ -1,0 +1,21 @@
+version: '3.8'
+
+services:
+  db:
+    image: mysql:8.0
+    container_name: cems_db
+    restart: unless-stopped
+    environment:
+      MYSQL_DATABASE: ${DB_DATABASE:-cems}
+      MYSQL_ROOT_PASSWORD: ${DB_PASSWORD:-secret}
+      MYSQL_PASSWORD: ${DB_PASSWORD:-secret}
+      MYSQL_USER: ${DB_USERNAME:-cems_user}
+    ports:
+      - "3307:3306"
+    volumes:
+      - dbdata:/var/lib/mysql
+    command: --default-authentication-plugin=mysql_native_password
+
+volumes:
+  dbdata:
+    driver: local
