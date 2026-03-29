@@ -26,7 +26,7 @@ class ManageEvents extends Component
     public $location_type = 'physical';
     public $capacity = '';
     public $category = '';
-    public $banner_image = null;
+    public $featured_image = null;
     public $status = 'draft';
 
     protected $rules = [
@@ -38,7 +38,7 @@ class ManageEvents extends Component
         'location_type' => 'required|in:physical,virtual',
         'capacity' => 'required|integer|min:1',
         'category' => 'nullable|string|max:100',
-        'banner_image' => 'nullable|image|max:2048',
+        'featured_image' => 'nullable|image|max:1024',
         'status' => 'required|in:draft,published',
     ];
 
@@ -67,7 +67,7 @@ class ManageEvents extends Component
         $this->location_type = 'physical';
         $this->capacity = '';
         $this->category = '';
-        $this->banner_image = null;
+        $this->featured_image = null;
         $this->status = 'draft';
         $this->resetErrorBag();
     }
@@ -89,8 +89,8 @@ class ManageEvents extends Component
             'organizer_id' => auth()->id(),
         ];
 
-        if ($this->banner_image) {
-            $data['banner_image'] = $this->banner_image->store('banners', 'public');
+        if ($this->featured_image) {
+            $data['featured_image'] = $this->featured_image->store('events', 'public');
         }
 
         if ($this->editMode) {
@@ -99,8 +99,8 @@ class ManageEvents extends Component
 
             $oldValues = $event->toArray();
 
-            if ($this->banner_image && $event->banner_image) {
-                Storage::disk('public')->delete($event->banner_image);
+            if ($this->featured_image && $event->featured_image) {
+                Storage::disk('public')->delete($event->featured_image);
             }
 
             $event->update($data);
@@ -144,8 +144,8 @@ class ManageEvents extends Component
         $event = Event::findOrFail($eventId);
         Gate::authorize('delete', $event);
 
-        if ($event->banner_image) {
-            Storage::disk('public')->delete($event->banner_image);
+        if ($event->featured_image) {
+            Storage::disk('public')->delete($event->featured_image);
         }
 
         AuditLog::log('event.deleted', $event, $event->toArray());

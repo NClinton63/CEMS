@@ -110,7 +110,7 @@
                     </button>
                 </div>
 
-                <form wire:submit.prevent="save" class="space-y-6">
+                <form wire:submit.prevent="save" enctype="multipart/form-data" class="space-y-6">
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                         <div class="md:col-span-2">
                             <label for="title" class="block text-sm font-medium text-gray-700 mb-2">Event Title</label>
@@ -230,9 +230,9 @@ unset($__errorArgs, $__bag); ?><?php if(\Livewire\Mechanisms\ExtendBlade\ExtendB
                         </div>
 
                         <div class="md:col-span-2">
-                            <label for="banner_image" class="block text-sm font-medium text-gray-700 mb-2">Featured Image</label>
-                            <input type="file" id="banner_image" wire:model="banner_image" accept="image/*" class="input-field w-full">
-                            <?php if(\Livewire\Mechanisms\ExtendBlade\ExtendBlade::isRenderingLivewireComponent()): ?><!--[if BLOCK]><![endif]--><?php endif; ?><?php $__errorArgs = ['banner_image'];
+                            <label for="featured_image" class="block text-sm font-medium text-gray-700 mb-2">Featured Image</label>
+                            <input type="file" id="featured_image" wire:model="featured_image" accept="image/*" class="input-field w-full">
+                            <?php if(\Livewire\Mechanisms\ExtendBlade\ExtendBlade::isRenderingLivewireComponent()): ?><!--[if BLOCK]><![endif]--><?php endif; ?><?php $__errorArgs = ['featured_image'];
 $__bag = $errors->getBag($__errorArgs[1] ?? 'default');
 if ($__bag->has($__errorArgs[0])) :
 if (isset($message)) { $__messageOriginal = $message; }
@@ -240,8 +240,8 @@ $message = $__bag->first($__errorArgs[0]); ?> <p class="mt-1 text-sm text-danger
 if (isset($__messageOriginal)) { $message = $__messageOriginal; }
 endif;
 unset($__errorArgs, $__bag); ?><?php if(\Livewire\Mechanisms\ExtendBlade\ExtendBlade::isRenderingLivewireComponent()): ?><!--[if ENDBLOCK]><![endif]--><?php endif; ?>
-                            <?php if(\Livewire\Mechanisms\ExtendBlade\ExtendBlade::isRenderingLivewireComponent()): ?><!--[if BLOCK]><![endif]--><?php endif; ?><?php if($banner_image): ?>
-                                <p class="mt-2 text-sm text-gray-600">Selected: <?php echo e($banner_image->getClientOriginalName()); ?></p>
+                            <?php if(\Livewire\Mechanisms\ExtendBlade\ExtendBlade::isRenderingLivewireComponent()): ?><!--[if BLOCK]><![endif]--><?php endif; ?><?php if($featured_image): ?>
+                                <p class="mt-2 text-sm text-gray-600">Selected: <?php echo e($featured_image->getClientOriginalName()); ?></p>
                             <?php endif; ?><?php if(\Livewire\Mechanisms\ExtendBlade\ExtendBlade::isRenderingLivewireComponent()): ?><!--[if ENDBLOCK]><![endif]--><?php endif; ?>
                         </div>
 

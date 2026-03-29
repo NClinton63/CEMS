@@ -35,8 +35,8 @@ class EventList extends Component
 
         if ($this->search) {
             $query->where(function ($q) {
-                $q->where('title', 'ilike', "%{$this->search}%")
-                  ->orWhere('description', 'ilike', "%{$this->search}%");
+                $q->where('title', 'like', "%{$this->search}%")
+                  ->orWhere('description', 'like', "%{$this->search}%");
             });
         }
 

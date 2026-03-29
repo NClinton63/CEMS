@@ -106,7 +106,7 @@
                     </button>
                 </div>
 
-                <form wire:submit.prevent="save" class="space-y-6">
+                <form wire:submit.prevent="save" enctype="multipart/form-data" class="space-y-6">
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                         <div class="md:col-span-2">
                             <label for="title" class="block text-sm font-medium text-gray-700 mb-2">Event Title</label>
@@ -170,11 +170,11 @@
                         </div>
 
                         <div class="md:col-span-2">
-                            <label for="banner_image" class="block text-sm font-medium text-gray-700 mb-2">Featured Image</label>
-                            <input type="file" id="banner_image" wire:model="banner_image" accept="image/*" class="input-field w-full">
-                            @error('banner_image') <p class="mt-1 text-sm text-danger">{{ $message }}</p> @enderror
-                            @if($banner_image)
-                                <p class="mt-2 text-sm text-gray-600">Selected: {{ $banner_image->getClientOriginalName() }}</p>
+                            <label for="featured_image" class="block text-sm font-medium text-gray-700 mb-2">Featured Image</label>
+                            <input type="file" id="featured_image" wire:model="featured_image" accept="image/*" class="input-field w-full">
+                            @error('featured_image') <p class="mt-1 text-sm text-danger">{{ $message }}</p> @enderror
+                            @if($featured_image)
+                                <p class="mt-2 text-sm text-gray-600">Selected: {{ $featured_image->getClientOriginalName() }}</p>
                             @endif
                         </div>
 
